@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products - Global Furniture</title>
+    <!-- Use Tailwind CSS for modern, responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font for a clean, professional look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Custom styles for the app */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        .card-image-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .card-image {
+            transition: transform 0.3s ease-in-out;
+        }
+        .card-image-container:hover .card-image {
+            transform: scale(1.1);
+        }
+        .whatsapp-icon {
+            z-index: 1000;
+            transition: transform 0.3s ease-in-out;
+        }
+        .whatsapp-icon:hover {
+            transform: scale(1.1);
+        }
+        .chat-box {
+            z-index: 1000;
+            bottom: 24px;
+            right: 24px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .chat-box.open {
+            transform: scale(1);
+            opacity: 1;
+        }
+        
+        .cart-modal-overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Hide the scrollbar for the body to prevent background scrolling when modal is open */
+        .no-scroll {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2 relative group">
+                <img src="https://placehold.co/60x60/3d5af1/ffffff?text=Logo" alt="Global Furniture Logo" class="h-12 w-12 rounded-full">
+                <span class="text-xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-blue-600">Global Furniture</span>
+                <span class="absolute inset-0 rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background-color: rgba(61, 90, 241, 0.2);"></span>
+            </a>
+            
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="index.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Home</a>
+                <a href="products.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Products</a>
+                <a href="about.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">About Us</a>
+                <a href="clients.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Clients</a>
+                <a href="contact.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Contact</a>
+                <a href="blog.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Blog</a>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="products.html?vendor=global" class="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">
+                    <img src="https://placehold.co/30x30/3d5af1/ffffff?text=G" alt="Global Logo" class="h-6 w-6 rounded-full">
+                    <span>Global</span>
+                </a>
+                <a href="products.html?vendor=kano" class="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">
+                    <img src="https://placehold.co/30x30/3d5af1/ffffff?text=K" alt="Kano Logo" class="h-6 w-6 rounded-full">
+                    <span>Kano</span>
+                </a>
+            </div>
+
+            <div class="flex items-center space-x-4 md:hidden">
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                    <i class="fas fa-search text-xl"></i>
+                </a>
+                <!-- Cart Icon for Mobile -->
+                <div class="relative">
+                    <button id="cart-button-mobile" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                    </button>
+                    <span id="cart-count-mobile" class="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-red-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center pointer-events-none">
+                        0
+                    </span>
+                </div>
+                <button id="mobile-menu-button" class="text-gray-600 focus:outline-none focus:text-blue-600 transition-colors duration-300">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                    <i class="fas fa-search text-xl"></i>
+                </a>
+                <!-- Cart Icon for Desktop -->
+                <div class="relative">
+                    <button id="cart-button-desktop" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                    </button>
+                    <span id="cart-count-desktop" class="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-red-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center pointer-events-none">
+                        0
+                    </span>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg py-4">
+            <div class="px-4 space-y-2">
+                <a href="index.html" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Home</a>
+                <a href="products.html" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Products</a>
+                <a href="products.html?vendor=global" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Global Products</a>
+                <a href="products.html?vendor=kano" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Kano Products</a>
+                <a href="about.html" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">About Us</a>
+                <a href="clients.html" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Clients</a>
+                <a href="contact.html" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Contact</a>
+                <a href="blog.html" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Blog</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4">
+                <h1 class="text-3xl md:text-5xl font-bold text-center mb-4 text-gray-900">Our Full Collection</h1>
+                <p class="text-lg md:text-xl text-center text-gray-600 mb-12">Find the perfect furniture for every corner of your office.</p>
+
+                <div class="flex flex-col md:flex-row justify-between items-center mb-8 space-y-4 md:space-y-0">
+                    <div class="flex items-center space-x-4">
+                        <label for="category-filter" class="text-sm font-medium text-gray-600">Filter by Category:</label>
+                        <select id="category-filter" class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="all">All Categories</option>
+                            <option value="chairs">Chairs</option>
+                            <option value="desks">Desks</option>
+                            <option value="storage">Storage</option>
+                            <option value="sofas">Sofas</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <label for="sort-by" class="text-sm font-medium text-gray-600">Sort by:</label>
+                        <select id="sort-by" class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="price-asc">Price: Low to High</option>
+                            <option value="price-desc">Price: High to Low</option>
+                            <option value="name-asc">Name: A-Z</option>
+                            <option value="name-desc">Name: Z-A</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    <!-- Products will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+    </main>
+    <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-icon fixed bottom-6 left-6 w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+    <div id="chat-bubble" class="fixed bottom-6 right-6 w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:bg-blue-700 transition-colors duration-300">
+        <i class="fas fa-comment-dots text-3xl"></i>
+    </div>
+    <div id="chat-box-container" class="fixed bottom-24 right-6 w-80 h-96 bg-white rounded-lg shadow-2xl flex flex-col hidden transform scale-95 opacity-0 origin-bottom-right chat-box">
+        <div class="bg-blue-600 text-white py-3 px-4 rounded-t-lg flex justify-between items-center">
+            <h5 class="font-semibold">Live Chat</h5>
+            <button id="close-chat-box" class="text-white text-xl leading-none">&times;</button>
+        </div>
+        <div class="flex-grow p-4 overflow-y-auto">
+            <div class="bg-gray-200 text-gray-800 p-3 rounded-lg max-w-xs mb-2">
+                Hello! How can I help you today?
+            </div>
+        </div>
+        <div class="p-4 border-t border-gray-200">
+            <input type="text" placeholder="Type a message..." class="w-full px-3 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+    </div>
+    <footer id="contact" class="bg-gray-900 text-gray-300 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Global Furniture</h4>
+                    <p class="text-sm">Providing high-quality office furniture to businesses and homes since 2010. We believe a great workspace leads to great work.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="hover:text-blue-500 transition-colors duration-300">Home</a></li>
+                        <li><a href="products.html" class="hover:text-blue-500 transition-colors duration-300">Products</a></li>
+                        <li><a href="about.html" class="hover:text-blue-500 transition-colors duration-300">About Us</a></li>
+                        <li><a href="clients.html" class="hover:text-blue-500 transition-colors duration-300">Clients</a></li>
+                        <li><a href="contact.html" class="hover:text-blue-500 transition-colors duration-300">Contact</a></li>
+                        <li><a href="blog.html" class="hover:text-blue-500 transition-colors duration-300">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><i class="fas fa-map-marker-alt mr-2 text-blue-400"></i>123 Office Rd, Business City</li>
+                        <li><i class="fas fa-envelope mr-2 text-blue-400"></i>info@globalfurniture.com</li>
+                        <li><i class="fas fa-phone mr-2 text-blue-400"></i>+1 (555) 123-4567</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300"><i class="fab fa-linkedin-in text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm">
+                &copy; 2024 Global Furniture. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center cart-modal-overlay transition-opacity duration-300">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-xl mx-4 p-8 relative transform scale-95 transition-transform duration-300">
+            <!-- Close button -->
+            <button id="close-cart-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+
+            <h2 class="text-3xl font-bold mb-6 text-center text-gray-900">Your Shopping Cart</h2>
+
+            <!-- Cart items list -->
+            <div id="cart-items" class="max-h-80 overflow-y-auto mb-6">
+                <!-- Cart items will be dynamically inserted here -->
+            </div>
+
+            <!-- Total price -->
+            <div class="flex justify-between items-center text-2xl font-bold border-t pt-4 border-gray-200">
+                <span>Total:</span>
+                <span id="cart-total">$0.00</span>
+            </div>
+
+            <!-- Checkout button -->
+            <button id="checkout-button" class="w-full bg-blue-600 text-white font-semibold py-3 mt-6 rounded-lg shadow-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105">
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+    
+    <div id="message-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
+        <div class="bg-white rounded-lg p-6 shadow-xl max-w-sm mx-auto">
+            <h3 class="text-lg font-bold mb-4">Thank You!</h3>
+            <p id="message-text" class="text-gray-700 mb-6">Your order has been placed successfully.</p>
+            <button id="close-message-modal" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">Close</button>
+        </div>
+    </div>
+
+
+    <script>
+        // Product data from the original file
+        const products = [
+            { id: 1, name: 'Ergonomic Office Chair', category: 'chairs', vendor: 'global', price: 299.00, imageUrl: 'https://kano-global.com/uploads/picture/20221109/c05535bfccf4c2a623cc4c1c7ec8537b.jpg', description: 'A highly ergonomic chair designed for long hours of comfortable work. Features adjustable lumbar support, armrests, and a breathable mesh back.' },
+            { id: 2, name: 'Minimalist Work Desk', category: 'desks', vendor: 'global', price: 450.00, imageUrl: 'https://kano-global.com/uploads/picture/20200806/ad5a97ab0746b6c544eefdd9021e6c93.jpg', description: 'A sleek and modern desk that combines functionality with a clean aesthetic. Made from high-quality wood with a durable finish.' },
+            { id: 3, name: 'Adjustable Storage Shelf', category: 'storage', vendor: 'global', price: 180.00, imageUrl: 'https://kano-global.com/uploads/picture/20200807/0d4aa26a180b199e4fc663470738c4a5.jpg', description: 'This versatile storage shelf can be configured to fit your space. Perfect for organizing files, books, or decorative items.' },
+            { id: 4, name: 'Executive Leather Chair', category: 'chairs', vendor: 'kano', price: 599.00, imageUrl: 'https://kano-global.com/uploads/picture/20200805/3ad424195b9768b5955e3d99407a30fb.jpg', description: 'Experience ultimate comfort and style with this premium leather executive chair. Features a high back and cushioned seat for superior support.' },
+            { id: 5, name: 'Height-Adjustable Desk', category: 'desks', vendor: 'kano', price: 750.00, imageUrl: 'https://kano-global.com/uploads/picture/20200805/2dd61fad56809c3c800f0030e3c2c531.jpg', description: 'Switch between sitting and standing effortlessly with this state-of-the-art height-adjustable desk. Promotes a healthier work lifestyle.' },
+            { id: 6, name: 'Minimalist Bookshelf', category: 'storage', vendor: 'kano', price: 220.00, imageUrl: 'https://kano-global.com/uploads/picture/20200807/a742e1ac90867cd25c8d24be76f26fea.jpg', description: 'A minimalist bookshelf with a geometric design that adds a modern touch to any room. Provides ample storage without being bulky.' },
+            { id: 7, name: 'Comfortable L-Shaped Sofa', category: 'sofas', vendor: 'global', price: 950.00, imageUrl: 'https://kano-global.com/uploads/picture/20200717/8b2a93bbe5d1bd98ef4789d20a252fd4.jpg ', description: 'This spacious L-shaped sofa is perfect for office lobbies or break rooms. Covered in a durable, easy-to-clean fabric.' },
+            { id: 8, name: 'Modern Conference Table', category: 'desks', vendor: 'kano', price: 890.00, imageUrl: 'https://kano-global.com/uploads/picture/20200804/2391c9c86148cd25684975f5450c1288.jpg', description: 'A large, stylish conference table with a smooth surface, ideal for collaborative meetings. Its modern design complements any professional setting.' }
+        ];
+        
+        const productGrid = document.getElementById('product-grid');
+        const categoryFilter = document.getElementById('category-filter');
+        const sortBy = document.getElementById('sort-by');
+        
+        // Cart-related elements
+        const cartButtonMobile = document.getElementById('cart-button-mobile');
+        const cartButtonDesktop = document.getElementById('cart-button-desktop');
+        const cartCountMobile = document.getElementById('cart-count-mobile');
+        const cartCountDesktop = document.getElementById('cart-count-desktop');
+        const cartModal = document.getElementById('cart-modal');
+        const closeCartModal = document.getElementById('close-cart-modal');
+        const cartItemsElement = document.getElementById('cart-items');
+        const cartTotalElement = document.getElementById('cart-total');
+        const checkoutButton = document.getElementById('checkout-button');
+        const messageModal = document.getElementById('message-modal');
+        const closeMessageModal = document.getElementById('close-message-modal');
+
+        // Initialize cart from localStorage or as an empty array
+        let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+
+        // Function to render products with add to cart button
+        function renderProducts(filteredProducts) {
+            productGrid.innerHTML = ''; // Clear previous products
+            if (filteredProducts.length === 0) {
+                productGrid.innerHTML = '<p class="text-center text-gray-500 col-span-full">No products found for this selection.</p>';
+                return;
+            }
+            
+            filteredProducts.forEach(product => {
+                const productCard = `
+                    <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden group" data-id="${product.id}">
+                        <a href="product-details.html?id=${product.id}" class="block">
+                            <div class="card-image-container">
+                                <img src="${product.imageUrl}" alt="${product.name}" class="w-full h-64 object-cover card-image">
+                            </div>
+                        </a>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold text-gray-900">${product.name}</h3>
+                            <p class="text-gray-600 mt-2">${product.vendor.charAt(0).toUpperCase() + product.vendor.slice(1)} Item</p>
+                            <div class="mt-4 text-2xl font-bold text-blue-600">$${product.price.toFixed(2)}</div>
+                            <div class="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-4 mt-4">
+                                <button class="add-to-cart-btn px-4 py-2 bg-gray-200 text-gray-800 font-semibold rounded-full hover:bg-blue-600 hover:text-white transition-colors duration-300">
+                                    Add to Cart
+                                </button>
+                                <a href="product-details.html?id=${product.id}" class="px-4 py-2 text-gray-800 font-semibold rounded-full border border-gray-300 hover:bg-gray-300 transition-colors duration-300">
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                productGrid.insertAdjacentHTML('beforeend', productCard);
+            });
+        }
+
+        // Function to filter and sort products
+        function filterAndSortProducts() {
+            const selectedCategory = categoryFilter.value;
+            const selectedSort = sortBy.value;
+            const urlParams = new URLSearchParams(window.location.search);
+            const vendor = urlParams.get('vendor');
+
+            let filteredProducts = products;
+
+            // Apply vendor filter from URL
+            if (vendor) {
+                filteredProducts = filteredProducts.filter(product => product.vendor.toLowerCase() === vendor.toLowerCase());
+            }
+
+            // Apply category filter
+            if (selectedCategory !== 'all') {
+                filteredProducts = filteredProducts.filter(product => product.category === selectedCategory);
+            }
+
+            // Apply sorting
+            if (selectedSort === 'price-asc') {
+                filteredProducts.sort((a, b) => a.price - b.price);
+            } else if (selectedSort === 'price-desc') {
+                filteredProducts.sort((a, b) => b.price - a.price);
+            } else if (selectedSort === 'name-asc') {
+                filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+            } else if (selectedSort === 'name-desc') {
+                filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
+            }
+
+            renderProducts(filteredProducts);
+        }
+
+        // --- Start of Cart Functionality ---
+
+        /**
+         * Updates the cart's state and localStorage.
+         */
+        const updateCart = () => {
+            // Update the cart item count on both desktop and mobile buttons
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCountMobile.textContent = totalItems;
+            cartCountDesktop.textContent = totalItems;
+
+            // Update the cart modal's content
+            if (cart.length === 0) {
+                cartItemsElement.innerHTML = '<p class="text-center text-gray-500">Your cart is empty.</p>';
+                checkoutButton.classList.add('opacity-50', 'cursor-not-allowed');
+                checkoutButton.disabled = true;
+            } else {
+                cartItemsElement.innerHTML = cart.map(item => `
+                    <div class="flex items-center justify-between py-2 border-b border-gray-200 last:border-b-0">
+                        <div class="flex items-center">
+                            <img src="${item.imageUrl}" alt="${item.name}" class="h-12 w-12 rounded-lg object-cover mr-4">
+                            <div>
+                                <h4 class="font-semibold">${item.name}</h4>
+                                <p class="text-sm text-gray-600">Quantity: ${item.quantity}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="font-bold text-gray-900 mr-4">$${(item.price * item.quantity).toFixed(2)}</span>
+                            <button data-id="${item.id}" class="remove-from-cart-btn text-red-500 hover:text-red-700 transition-colors">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+                checkoutButton.classList.remove('opacity-50', 'cursor-not-allowed');
+                checkoutButton.disabled = false;
+            }
+
+            // Calculate and update the total price
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotalElement.textContent = `$${totalPrice.toFixed(2)}`;
+
+            // Save cart to localStorage
+            localStorage.setItem('shoppingCart', JSON.stringify(cart));
+        };
+
+        /**
+         * Adds a product to the cart or increases its quantity if it already exists.
+         * @param {number} productId - The ID of the product to add.
+         */
+        const addToCart = (productId) => {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCart();
+        };
+
+        /**
+         * Removes a product from the cart.
+         * @param {number} productId - The ID of the product to remove.
+         */
+        const removeFromCart = (productId) => {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+        };
+
+        /**
+         * Handles the checkout process.
+         */
+        const checkout = () => {
+            document.getElementById('message-text').textContent = 'Your order has been placed successfully.';
+            messageModal.classList.remove('hidden');
+            cart = []; // Empty the cart after checkout
+            updateCart();
+            hideCartModal();
+        };
+
+        /**
+         * Displays the cart modal.
+         */
+        const showCartModal = () => {
+            cartModal.classList.remove('hidden');
+            document.body.classList.add('no-scroll'); // Disable body scroll
+        };
+
+        /**
+         * Hides the cart modal.
+         */
+        const hideCartModal = () => {
+            cartModal.classList.add('hidden');
+            document.body.classList.remove('no-scroll'); // Re-enable body scroll
+        };
+        
+        const hideMessageModal = () => {
+            messageModal.classList.add('hidden');
+        };
+
+        // --- End of Cart Functionality ---
+
+        // Event listeners for filters and sorting
+        categoryFilter.addEventListener('change', filterAndSortProducts);
+        sortBy.addEventListener('change', filterAndSortProducts);
+
+        // Event listeners for cart buttons and modal
+        cartButtonMobile.addEventListener('click', showCartModal);
+        cartButtonDesktop.addEventListener('click', showCartModal);
+        closeCartModal.addEventListener('click', hideCartModal);
+        cartModal.addEventListener('click', (event) => {
+            // Hide modal if user clicks on the overlay
+            if (event.target === cartModal) {
+                hideCartModal();
+            }
+        });
+        checkoutButton.addEventListener('click', checkout);
+        closeMessageModal.addEventListener('click', hideMessageModal);
+        
+        // Add item to cart button handler
+        productGrid.addEventListener('click', (event) => {
+            if (event.target.classList.contains('add-to-cart-btn')) {
+                const productCard = event.target.closest('div[data-id]');
+                const productId = parseInt(productCard.dataset.id);
+                addToCart(productId);
+            }
+        });
+
+        // Remove item from cart button handler
+        cartItemsElement.addEventListener('click', (event) => {
+            if (event.target.closest('.remove-from-cart-btn')) {
+                const productId = parseInt(event.target.closest('.remove-from-cart-btn').dataset.id);
+                removeFromCart(productId);
+            }
+        });
+
+        // Initial render on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            filterAndSortProducts();
+            updateCart();
+        });
+    </script>
+</body>
+</html>

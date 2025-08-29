@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Clients - Global Furniture</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2 relative group">
+                <img src="https://placehold.co/60x60/3d5af1/ffffff?text=Logo" alt="Global Furniture Logo" class="h-12 w-12 rounded-full">
+                <span class="text-xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-blue-600">Global Furniture</span>
+                <span class="absolute inset-0 rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background-color: rgba(61, 90, 241, 0.2);"></span>
+            </a>
+            
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="index.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Home</a>
+                <a href="products.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Products</a>
+                <a href="about.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">About Us</a>
+                <a href="clients.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Clients</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Contact</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Blog</a>
+            </div>
+
+            <div class="flex items-center space-x-4 md:hidden">
+                <a href="https://ifdalivestorage.blob.core.windows.net/user-uploads/profile/19745/00000000-0000-0000-0000-000000000000/logo_606b6865f82052318f8e4e1b9d9b63b83c07ed2b.png" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                    <i class="fas fa-search text-xl"></i>
+                </a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                    <i class="fas fa-shopping-cart text-xl"></i>
+                </a>
+                <button id="mobile-menu-button" class="text-gray-600 focus:outline-none focus:text-blue-600 transition-colors duration-300">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                    <i class="fas fa-search text-xl"></i>
+                </a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                    <i class="fas fa-shopping-cart text-xl"></i>
+                </a>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg py-4">
+            <div class="px-4 space-y-2">
+                <a href="index.html" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Home</a>
+                <a href="products.html" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Products</a>
+                <a href="about.html" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">About Us</a>
+                <a href="clients.html" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Clients</a>
+                <a href="#contact" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Contact</a>
+                <a href="#" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Blog</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-24 container mx-auto px-4">
+        <div id="default-client-content">
+            <h1 class="text-3xl md:text-5xl font-bold text-center mb-4 text-gray-900">Our Valued Clients</h1>
+            <p class="text-lg md:text-xl text-center text-gray-600 mb-12">
+                We're proud to have partnered with a diverse range of clients to create exceptional workspaces.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <a href="https://ifdalivestorage.blob.core.windows.net/user-uploads/profile/19745/00000000-0000-0000-0000-000000000000/logo_606b6865f82052318f8e4e1b9d9b63b83c07ed2b.png" class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 text-center">
+                    <h2 class="text-2xl font-bold text-gray-800">Company A</h2>
+                    <p class="text-gray-600 mt-2">A leading tech innovator.</p>
+                </a>
+                <a href="https://ifdalivestorage.blob.core.windows.net/user-uploads/profile/19745/00000000-0000-0000-0000-000000000000/logo_606b6865f82052318f8e4e1b9d9b63b83c07ed2b.png" class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 text-center">
+                    <h2 class="text-2xl font-bold text-gray-800">Company B</h2>
+                    <p class="text-gray-600 mt-2">A well-established financial firm.</p>
+                </a>
+                <a href="clients.html?client=companyC" class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 text-center">
+                    <h2 class="text-2xl font-bold text-gray-800">Company C</h2>
+                    <p class="text-gray-600 mt-2">A creative marketing agency.</p>
+                </a>
+            </div>
+        </div>
+
+        <div id="client-project-container"></div>
+    </main>
+
+    <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-icon fixed bottom-6 left-6 w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+    <div id="chat-bubble" class="fixed bottom-6 right-6 w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:bg-blue-700 transition-colors duration-300">
+        <i class="fas fa-comment-dots text-3xl"></i>
+    </div>
+    <div id="chat-box-container" class="fixed bottom-24 right-6 w-80 h-96 bg-white rounded-lg shadow-2xl flex flex-col hidden transform scale-95 opacity-0 origin-bottom-right chat-box">
+        <div class="bg-blue-600 text-white py-3 px-4 rounded-t-lg flex justify-between items-center">
+            <h5 class="font-semibold">Live Chat</h5>
+            <button id="close-chat-box" class="text-white text-xl leading-none">&times;</button>
+        </div>
+        <div class="flex-grow p-4 overflow-y-auto">
+            <div class="bg-gray-200 text-gray-800 p-3 rounded-lg max-w-xs mb-2">
+                Hello! How can I help you today?
+            </div>
+        </div>
+        <div class="p-4 border-t border-gray-200">
+            <input type="text" placeholder="Type a message..." class="w-full px-3 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+    </div>
+    <footer id="contact" class="bg-gray-900 text-gray-300 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Global Furniture</h4>
+                    <p class="text-sm">Providing high-quality office furniture to businesses and homes since 2010. We believe a great workspace leads to great work.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="hover:text-blue-500 transition-colors duration-300">Home</a></li>
+                        <li><a href="products.html" class="hover:text-blue-500 transition-colors duration-300">Products</a></li>
+                        <li><a href="about.html" class="hover:text-blue-500 transition-colors duration-300">About Us</a></li>
+                        <li><a href="clients.html" class="hover:text-blue-500 transition-colors duration-300">Clients</a></li>
+                        <li><a href="#contact" class="hover:text-blue-500 transition-colors duration-300">Contact</a></li>
+                        <li><a href="#" class="hover:text-blue-500 transition-colors duration-300">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><i class="fas fa-map-marker-alt mr-2 text-blue-400"></i>123 Office Rd, Business City</li>
+                        <li><i class="fas fa-envelope mr-2 text-blue-400"></i>info@globalfurniture.com</li>
+                        <li><i class="fas fa-phone mr-2 text-blue-400"></i>+1 (555) 123-4567</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300"><i class="fab fa-linkedin-in text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm">
+                &copy; 2024 Global Furniture. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const clientProjectContainer = document.getElementById('client-project-container');
+            const defaultContent = document.getElementById('default-client-content');
+    
+            // Define your client project data here
+            const clientProjects = {
+                companyA: {
+                    title: "PSO Inc. Project",
+                    description: "For Tech Solutions Inc., we designed a cutting-edge workspace that fosters collaboration and innovation. We installed modern, modular desks, comfortable ergonomic chairs, and creative breakout spaces to boost productivity.",
+                    images: [
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0hyf4rruFKm5g-qpLiNnOoju-jBDWiE-SXg&s',
+                        'https://media.licdn.com/dms/image/v2/D4E22AQEGMyjr4PHABg/feedshare-shrink_800/feedshare-shrink_800/0/1711089839702?e=2147483647&v=beta&t=mkmHVLVTgrgn2cQkEZJXrAYBaawklAyYU2ndCSji2Xw',
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQADTvrg1KsEqN7i2tutWXlUjMG9Et16oHGaQ&s'
+                    ],
+                    video: 'https://www.shutterstock.com/shutterstock/videos/3392821263/preview/stock-footage-interior-design-concept-sale-discounts-promotion-of-spinning-furniture-sofa-armchair-surrounded.webm' // Example YouTube embed URL
+                },
+                companyE: {
+                    title: "HUAWEI Ltd. Project",
+                    description: "Our project with Financial Innovations Ltd. focused on creating a professional yet comfortable environment. We used classic, high-quality wooden desks and executive leather chairs to create an atmosphere of stability and trust.",
+                    images: [
+                        'https://officesnapshots.com/wp-content/uploads/2016/09/Open-Plan-1-700x467.jpg',
+                        'https://www.lamex.com/sites/default/files/styles/project_content_slider_image/public/2022-05/huawei_7.jpg'
+                    ],
+                    video: 'https://www.shutterstock.com/shutterstock/videos/3392821263/preview/stock-footage-interior-design-concept-sale-discounts-promotion-of-spinning-furniture-sofa-armchair-surrounded.webm' // Example Vimeo embed URL
+                },
+                companyC: {
+                    title: "Creative Minds Agency Project",
+                    description: "We helped Creative Minds Agency build a dynamic and inspiring office space. Our design focused on vibrant colors, unique lounge chairs, and flexible furniture that can be rearranged for brainstorming sessions.",
+                    images: [
+                        'https://i.ytimg.com/vi/2RiQacX1jaw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDM2VPoFiXjXdpUnyINRPlJn5yxQQ'
+                    ]
+                
+                }
+            };
+    
+            const urlParams = new URLSearchParams(window.location.search);
+            const clientId = urlParams.get('client');
+    
+            if (clientId && clientProjects[clientId]) {
+                const project = clientProjects[clientId];
+                defaultContent.classList.add('hidden'); // Hide the default content
+    
+                let imagesHtml = project.images.map(src => 
+                    `<img src="${src}" alt="${project.title} Project Image" class="w-full rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">`
+                ).join('https://www.shutterstock.com/shutterstock/videos/3392821263/preview/stock-footage-interior-design-concept-sale-discounts-promotion-of-spinning-furniture-sofa-armchair-surrounded.webm');
+    
+                let videoHtml = 'https://www.shutterstock.com/shutterstock/videos/3392821263/preview/stock-footage-interior-design-concept-sale-discounts-promotion-of-spinning-furniture-sofa-armchair-surrounded.webm';
+                if (project.video) {
+                    videoHtml = `
+                        <div class="mt-12">
+                            <h3 class="text-2xl md:text-3xl font-bold text-center mb-6 text-gray-900">Project Video</h3>
+                            <div class="aspect-w-16 aspect-h-9 overflow-hidden rounded-lg shadow-xl">
+                                <iframe
+                                    src="${project.video}"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen
+                                    class="w-full h-full"
+                                ></iframe>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                clientProjectContainer.innerHTML = `
+                    <div class="max-w-4xl mx-auto">
+                        <h1 class="text-3xl md:text-5xl font-bold text-center mb-4 text-gray-900">${project.title}</h1>
+                        <p class="text-lg md:text-xl text-center text-gray-600 mb-12">${project.description}</p>
+                        
+                        ${videoHtml}
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+                            ${imagesHtml}
+                        </div>
+                    </div>
+                `;
+            } else {
+                defaultContent.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

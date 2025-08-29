@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Global Furniture</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2 relative group">
+                <img src="https://placehold.co/60x60/3d5af1/ffffff?text=Logo" alt="Global Furniture Logo" class="h-12 w-12 rounded-full">
+                <span class="text-xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-blue-600">Global Furniture</span>
+                <span class="absolute inset-0 rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background-color: rgba(61, 90, 241, 0.2);"></span>
+            </a>
+            
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="index.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Home</a>
+                <a href="products.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Products</a>
+                <a href="about.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">About Us</a>
+                <a href="clients.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Clients</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Contact</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Blog</a>
+            </div>
+
+            <div class="flex items-center space-x-4 md:hidden">
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                    <i class="fas fa-search text-xl"></i>
+                </a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                    <i class="fas fa-shopping-cart text-xl"></i>
+                </a>
+                <button id="mobile-menu-button" class="text-gray-600 focus:outline-none focus:text-blue-600 transition-colors duration-300">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                    <i class="fas fa-search text-xl"></i>
+                </a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                    <i class="fas fa-shopping-cart text-xl"></i>
+                </a>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg py-4">
+            <div class="px-4 space-y-2">
+                <a href="index.html" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Home</a>
+                <a href="products.html" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Products</a>
+                <a href="about.html" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">About Us</a>
+                <a href="clients.html" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Clients</a>
+                <a href="#contact" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Contact</a>
+                <a href="#" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Blog</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-24 container mx-auto px-4">
+        <div class="bg-white p-12 rounded-2xl shadow-xl max-w-4xl mx-auto">
+            <h1 class="text-4xl font-bold text-gray-800 text-center mb-6">About Global Furniture</h1>
+            <p class="text-gray-700 leading-relaxed mb-6">
+                Welcome to Global Furniture, where we've been dedicated to providing high-quality office furniture to businesses and homes since 2010. We were founded on the belief that a great workspace is the foundation for great work. Our mission is to help you create an environment that is not only functional and productive but also comfortable and stylish.
+            </p>
+            <p class="text-gray-700 leading-relaxed mb-6">
+                Our journey began with a commitment to excellence. We meticulously select sustainable materials, partner with skilled artisans, and rigorously test every piece to ensure it meets our high standards of quality and durability. We believe in creating furniture that not only looks beautiful but is built to last for years to come.
+            </p>
+            <div class="flex flex-col md:flex-row items-center justify-between mb-6 space-y-4 md:space-y-0 md:space-x-8">
+                <img src="https://placehold.co/600x400/3d5af1/ffffff?text=Our+Team" alt="Image of our team" class="w-full md:w-1/2 rounded-xl shadow-md">
+                <img src="https://placehold.co/600x400/3d5af1/ffffff?text=Our+Process" alt="Image of our process" class="w-full md:w-1/2 rounded-xl shadow-md">
+            </div>
+            <p class="text-gray-700 leading-relaxed">
+                Thank you for being a part of our story. We're excited to continue providing furniture solutions that help you design a space where you can do your best work.
+            </p>
+        </div>
+    </main>
+
+    <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-icon fixed bottom-6 left-6 w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+    <div id="chat-bubble" class="fixed bottom-6 right-6 w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:bg-blue-700 transition-colors duration-300">
+        <i class="fas fa-comment-dots text-3xl"></i>
+    </div>
+    <div id="chat-box-container" class="fixed bottom-24 right-6 w-80 h-96 bg-white rounded-lg shadow-2xl flex flex-col hidden transform scale-95 opacity-0 origin-bottom-right chat-box">
+        <div class="bg-blue-600 text-white py-3 px-4 rounded-t-lg flex justify-between items-center">
+            <h5 class="font-semibold">Live Chat</h5>
+            <button id="close-chat-box" class="text-white text-xl leading-none">&times;</button>
+        </div>
+        <div class="flex-grow p-4 overflow-y-auto">
+            <div class="bg-gray-200 text-gray-800 p-3 rounded-lg max-w-xs mb-2">
+                Hello! How can I help you today?
+            </div>
+        </div>
+        <div class="p-4 border-t border-gray-200">
+            <input type="text" placeholder="Type a message..." class="w-full px-3 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+    </div>
+    <footer id="contact" class="bg-gray-900 text-gray-300 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Global Furniture</h4>
+                    <p class="text-sm">Providing high-quality office furniture to businesses and homes since 2010. We believe a great workspace leads to great work.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="hover:text-blue-500 transition-colors duration-300">Home</a></li>
+                        <li><a href="products.html" class="hover:text-blue-500 transition-colors duration-300">Products</a></li>
+                        <li><a href="about.html" class="hover:text-blue-500 transition-colors duration-300">About Us</a></li>
+                        <li><a href="clients.html" class="hover:text-blue-500 transition-colors duration-300">Clients</a></li>
+                        <li><a href="#contact" class="hover:text-blue-500 transition-colors duration-300">Contact</a></li>
+                        <li><a href="#" class="hover:text-blue-500 transition-colors duration-300">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><i class="fas fa-map-marker-alt mr-2 text-blue-400"></i>123 Office Rd, Business City</li>
+                        <li><i class="fas fa-envelope mr-2 text-blue-400"></i>info@globalfurniture.com</li>
+                        <li><i class="fas fa-phone mr-2 text-blue-400"></i>+1 (555) 123-4567</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300"><i class="fab fa-linkedin-in text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm">
+                &copy; 2024 Global Furniture. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

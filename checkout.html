@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Global Furniture</title>
+    <!-- Use Tailwind CSS for modern, responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font for a clean, professional look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Custom styles for the app */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .cart-modal-overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2 relative group">
+                <img src="https://placehold.co/60x60/3d5af1/ffffff?text=Logo" alt="Global Furniture Logo" class="h-12 w-12 rounded-full">
+                <span class="text-xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-blue-600">Global Furniture</span>
+                <span class="absolute inset-0 rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background-color: rgba(61, 90, 241, 0.2);"></span>
+            </a>
+            
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="index.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Home</a>
+                <a href="products.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Products</a>
+                <a href="about.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">About Us</a>
+                <a href="clients.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Clients</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Contact</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Blog</a>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="products.html?vendor=global" class="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">
+                    <img src="https://placehold.co/30x30/3d5af1/ffffff?text=G" alt="Global Logo" class="h-6 w-6 rounded-full">
+                    <span>Global</span>
+                </a>
+                <a href="products.html?vendor=kano" class="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">
+                    <img src="https://placehold.co/30x30/3d5af1/ffffff?text=K" alt="Kano Logo" class="h-6 w-6 rounded-full">
+                    <span>Kano</span>
+                </a>
+            </div>
+
+            <div class="flex items-center space-x-4 md:hidden">
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                    <i class="fas fa-search text-xl"></i>
+                </a>
+                <!-- Cart Icon for Mobile -->
+                <div class="relative">
+                    <button id="cart-button-mobile" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                    </button>
+                    <span id="cart-count-mobile" class="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-red-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center pointer-events-none">
+                        0
+                    </span>
+                </div>
+                <button id="mobile-menu-button" class="text-gray-600 focus:outline-none focus:text-blue-600 transition-colors duration-300">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                    <i class="fas fa-search text-xl"></i>
+                </a>
+                <!-- Cart Icon for Desktop -->
+                <div class="relative">
+                    <button id="cart-button-desktop" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                    </button>
+                    <span id="cart-count-desktop" class="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-red-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center pointer-events-none">
+                        0
+                    </span>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg py-4">
+            <div class="px-4 space-y-2">
+                <a href="index.html" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Home</a>
+                <a href="products.html" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Products</a>
+                <a href="products.html?vendor=global" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Global Products</a>
+                <a href="products.html?vendor=kano" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Kano Products</a>
+                <a href="about.html" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">About Us</a>
+                <a href="clients.html" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Clients</a>
+                <a href="#contact" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Contact</a>
+                <a href="#" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Blog</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-bold text-center mb-4 text-gray-900">Checkout</h1>
+            <p class="text-lg md:text-xl text-center text-gray-600 mb-12">Please review your order and fill out your details to complete the purchase.</p>
+
+            <div class="bg-white rounded-xl shadow-lg p-8 md:p-12 max-w-5xl mx-auto flex flex-col lg:flex-row gap-12">
+                <!-- Order Summary -->
+                <div class="lg:w-1/2">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Order Summary</h2>
+                    <div id="order-summary-items" class="space-y-4 mb-6">
+                        <!-- Cart items will be dynamically inserted here -->
+                    </div>
+                    <div class="border-t border-gray-200 pt-6">
+                        <div class="flex justify-between items-center text-gray-700 mb-2">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">$0.00</span>
+                        </div>
+                        <div class="flex justify-between items-center text-gray-700 mb-2">
+                            <span>Tax (5%):</span>
+                            <span id="tax">$0.00</span>
+                        </div>
+                        <div class="flex justify-between items-center text-2xl font-bold text-gray-900">
+                            <span>Total:</span>
+                            <span id="total">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shipping and Payment Form -->
+                <div class="lg:w-1/2">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Shipping & Payment</h2>
+                    <form id="checkout-form" class="space-y-6">
+                        <!-- Shipping Information -->
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4">Shipping Information</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="fullName" class="block text-sm font-medium text-gray-700">Full Name</label>
+                                    <input type="text" id="fullName" name="fullName" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                                    <input type="email" id="email" name="email" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3">
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <label for="address" class="block text-sm font-medium text-gray-700">Street Address</label>
+                                <input type="text" id="address" name="address" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3">
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                                <div>
+                                    <label for="city" class="block text-sm font-medium text-gray-700">City</label>
+                                    <input type="text" id="city" name="city" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3">
+                                </div>
+                                <div>
+                                    <label for="state" class="block text-sm font-medium text-gray-700">State / Province</label>
+                                    <input type="text" id="state" name="state" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3">
+                                </div>
+                                <div>
+                                    <label for="zip" class="block text-sm font-medium text-gray-700">Zip / Postal Code</label>
+                                    <input type="text" id="zip" name="zip" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Information -->
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4">Payment Information</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label for="cardNumber" class="block text-sm font-medium text-gray-700">Credit Card Number</label>
+                                    <input type="text" id="cardNumber" name="cardNumber" required placeholder="XXXX-XXXX-XXXX-XXXX" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3">
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="expiry" class="block text-sm font-medium text-gray-700">Expiry Date</label>
+                                        <input type="text" id="expiry" name="expiry" required placeholder="MM/YY" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3">
+                                    </div>
+                                    <div>
+                                        <label for="cvv" class="block text-sm font-medium text-gray-700">CVV</label>
+                                        <input type="text" id="cvv" name="cvv" required placeholder="XXX" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="form-message" class="text-red-600 text-sm font-medium hidden">Please fill out all required fields.</div>
+
+                        <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-4 mt-6 rounded-lg shadow-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105">
+                            Place Order
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-icon fixed bottom-6 left-6 w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+    <div id="chat-bubble" class="fixed bottom-6 right-6 w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:bg-blue-700 transition-colors duration-300">
+        <i class="fas fa-comment-dots text-3xl"></i>
+    </div>
+    <div id="chat-box-container" class="fixed bottom-24 right-6 w-80 h-96 bg-white rounded-lg shadow-2xl flex flex-col hidden transform scale-95 opacity-0 origin-bottom-right chat-box">
+        <div class="bg-blue-600 text-white py-3 px-4 rounded-t-lg flex justify-between items-center">
+            <h5 class="font-semibold">Live Chat</h5>
+            <button id="close-chat-box" class="text-white text-xl leading-none">&times;</button>
+        </div>
+        <div class="flex-grow p-4 overflow-y-auto">
+            <div class="bg-gray-200 text-gray-800 p-3 rounded-lg max-w-xs mb-2">
+                Hello! How can I help you today?
+            </div>
+        </div>
+        <div class="p-4 border-t border-gray-200">
+            <input type="text" placeholder="Type a message..." class="w-full px-3 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+    </div>
+    <footer id="contact" class="bg-gray-900 text-gray-300 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Global Furniture</h4>
+                    <p class="text-sm">Providing high-quality office furniture to businesses and homes since 2010. We believe a great workspace leads to great work.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="hover:text-blue-500 transition-colors duration-300">Home</a></li>
+                        <li><a href="products.html" class="hover:text-blue-500 transition-colors duration-300">Products</a></li>
+                        <li><a href="about.html" class="hover:text-blue-500 transition-colors duration-300">About Us</a></li>
+                        <li><a href="clients.html" class="hover:text-blue-500 transition-colors duration-300">Clients</a></li>
+                        <li><a href="#contact" class="hover:text-blue-500 transition-colors duration-300">Contact</a></li>
+                        <li><a href="#" class="hover:text-blue-500 transition-colors duration-300">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><i class="fas fa-map-marker-alt mr-2 text-blue-400"></i>123 Office Rd, Business City</li>
+                        <li><i class="fas fa-envelope mr-2 text-blue-400"></i>info@globalfurniture.com</li>
+                        <li><i class="fas fa-phone mr-2 text-blue-400"></i>+1 (555) 123-4567</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300"><i class="fab fa-linkedin-in text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm">
+                &copy; 2024 Global Furniture. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <div id="message-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
+        <div class="bg-white rounded-lg p-6 shadow-xl max-w-sm mx-auto">
+            <h3 class="text-lg font-bold mb-4">Order Placed!</h3>
+            <p id="message-text" class="text-gray-700 mb-6">Thank you for your purchase. Your order has been placed and a confirmation email has been sent.</p>
+            <button id="close-message-modal" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const orderSummaryItems = document.getElementById('order-summary-items');
+        const subtotalElement = document.getElementById('subtotal');
+        const taxElement = document.getElementById('tax');
+        const totalElement = document.getElementById('total');
+        const checkoutForm = document.getElementById('checkout-form');
+        const formMessage = document.getElementById('form-message');
+        const messageModal = document.getElementById('message-modal');
+        const closeMessageModal = document.getElementById('close-message-modal');
+
+        // Retrieve cart items from localStorage
+        const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+        
+        // Render order summary
+        function renderOrderSummary() {
+            orderSummaryItems.innerHTML = ''; // Clear previous items
+            if (cart.length === 0) {
+                orderSummaryItems.innerHTML = '<p class="text-center text-gray-500">Your cart is empty. Please add items from the <a href="products.html" class="text-blue-600 hover:underline">products page</a>.</p>';
+            } else {
+                let subtotal = 0;
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    subtotal += itemTotal;
+                    const itemHtml = `
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <img src="${item.imageUrl}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg">
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">${item.name}</h4>
+                                    <p class="text-sm text-gray-600">Qty: ${item.quantity}</p>
+                                </div>
+                            </div>
+                            <span class="text-lg font-bold text-gray-900">$${itemTotal.toFixed(2)}</span>
+                        </div>
+                    `;
+                    orderSummaryItems.insertAdjacentHTML('beforeend', itemHtml);
+                });
+
+                const taxRate = 0.05; // 5% tax
+                const tax = subtotal * taxRate;
+                const total = subtotal + tax;
+
+                subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+                taxElement.textContent = `$${tax.toFixed(2)}`;
+                totalElement.textContent = `$${total.toFixed(2)}`;
+            }
+        }
+        
+        // Handles form submission
+        function handleCheckout(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Simple validation check
+            const form = event.target;
+            if (!form.checkValidity()) {
+                formMessage.classList.remove('hidden');
+                return;
+            } else {
+                formMessage.classList.add('hidden');
+            }
+
+            // Clear the cart from localStorage
+            localStorage.removeItem('shoppingCart');
+
+            // Show confirmation modal
+            messageModal.classList.remove('hidden');
+        }
+
+        // Event listeners
+        checkoutForm.addEventListener('submit', handleCheckout);
+        closeMessageModal.addEventListener('click', () => {
+            messageModal.classList.add('hidden');
+            // Redirect to home page after order is placed
+            window.location.href = 'index.html';
+        });
+
+        // Initial render on page load
+        document.addEventListener('DOMContentLoaded', renderOrderSummary);
+    </script>
+</body>
+</html>
