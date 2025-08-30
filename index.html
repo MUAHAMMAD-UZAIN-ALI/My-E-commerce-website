@@ -13,7 +13,66 @@
         /* Custom styles for animations and hover effects */
         body {
             font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
+
+        /* Dark Theme Styles */
+        body.dark {
+            background-color: #121212;
+            color: #E0E0E0;
+        }
+        body.dark .bg-gray-100 {
+            background-color: #1a1a1a;
+        }
+        body.dark .text-gray-800 {
+            color: #E0E0E0;
+        }
+        body.dark .bg-gray-200 {
+            background-color: #242424;
+        }
+        body.dark .text-gray-900 {
+            color: #E0E0E0;
+        }
+        body.dark .text-white {
+            color: #E0E0E0;
+        }
+        body.dark .bg-white {
+            background-color: #1c1c1c;
+        }
+        body.dark .shadow-lg {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.29);
+        }
+        body.dark .bg-gray-900 {
+            background-color: #0d0d0d;
+        }
+        body.dark .border-gray-700 {
+            border-color: #444;
+        }
+        body.dark .text-gray-300 {
+            color: #B0B0B0;
+        }
+        body.dark .text-gray-400 {
+            color: #999;
+        }
+        body.dark .card-image-container {
+            background-color: #222;
+        }
+        body.dark .bg-gray-200 {
+            background-color: #2e2e2e;
+        }
+        body.dark .text-black {
+             color: #E0E0E0;
+        }
+        body.dark .bg-black-600 {
+            background-color: #2c2c2c;
+        }
+
+        /* Hero section specific style for dark mode */
+        body.dark .hero-text-overlay h1, body.dark .hero-text-overlay p, body.dark .hero-text-overlay a {
+            color: #E0E0E0 !important;
+        }
+
+        /* Normal styles below this line */
         .card-image-container {
             position: relative;
             overflow: hidden;
@@ -60,43 +119,42 @@
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
-
-    <header class="bg-white shadow-md sticky top-0 z-50">
+    <header class="bg-transparent absolute top-0 left-0 w-full z-50">
         <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-2 relative group">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh_tKEzYjfeJPBSmUo0SZd396_k9OzqdyDWg&s" alt="Global Furniture Logo" class="h-12 w-12 rounded-full">
-                <span class="text-xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-blue-600">Global Furniture</span>
-                <span class="absolute inset-0 rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background-color: rgba(61, 90, 241, 0.2);"></span>
-            </a>
-            
             <div class="hidden md:flex items-center space-x-6">
-                <a href="index.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Home</a>
-                <a href="products.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Products</a>
-                <a href="about.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">About Us</a>
-                <a href="clients.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Clients</a>
-                <a href="contact.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Contact</a>
-                <a href="blog.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Blog</a>
+                <a href="index.html" class="text-white hover:text-blue-200 transition-colors duration-300 font-medium">Home</a>
+                <a href="products.html" class="text-white hover:text-blue-200 transition-colors duration-300 font-medium">Products</a>
+                <a href="about.html" class="text-white hover:text-blue-200 transition-colors duration-300 font-medium">About Us</a>
+            </div>
+
+            <a href="index.html" class="flex items-center space-x-2 relative group md:mx-auto">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh_tKEzYjfeJPBSmUo0SZd396_k9OzqdyDWg&s" alt="Global Furniture Logo" class="h-12 w-12 rounded-full">
+                <span class="text-xl font-bold text-white transition-colors duration-300 group-hover:text-blue-600">Global Furniture</span>
+                <span class="absolute inset-0 rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background-color: rgba(238, 115, 0, 0.2);"></span>
+            </a>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="clients.html" class="text-white hover:text-blue-200 transition-colors duration-300 font-medium">Clients</a>
+                <a href="contact.html" class="text-white hover:text-blue-200 transition-colors duration-300 font-medium">Contact</a>
+                <a href="blog.html" class="text-white hover:text-blue-200 transition-colors duration-300 font-medium">Blog</a>
+                <a href="#" class="text-white hover:text-blue-200 transition-colors duration-300">
+                    <i class="fas fa-search text-xl"></i>
+                </a>
+                <a href="#" class="text-white hover:text-blue-200 transition-colors duration-300">
+                    <i class="fas fa-shopping-cart text-xl"></i>
+                </a>
             </div>
 
             <div class="flex items-center space-x-4 md:hidden">
-                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                <a href="#" class="text-white hover:text-blue-600 transition-colors duration-300">
                     <i class="fas fa-search text-xl"></i>
                 </a>
-                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                <a href="#" class="text-white hover:text-blue-600 transition-colors duration-300">
                     <i class="fas fa-shopping-cart text-xl"></i>
                 </a>
-                <button id="mobile-menu-button" class="text-gray-600 focus:outline-none focus:text-blue-600 transition-colors duration-300">
+                <button id="mobile-menu-button" class="text-white focus:outline-none focus:text-blue-600 transition-colors duration-300">
                     <i class="fas fa-bars text-2xl"></i>
                 </button>
-            </div>
-            
-            <div class="hidden md:flex items-center space-x-6">
-                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
-                    <i class="fas fa-search text-xl"></i>
-                </a>
-                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
-                    <i class="fas fa-shopping-cart text-xl"></i>
-                </a>
             </div>
         </nav>
 
@@ -106,23 +164,18 @@
                 <a href="products.html" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Products</a>
                 <a href="about.html" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">About Us</a>
                 <a href="clients.html" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Clients</a>
-            <a href="contact.html" class="hover:text-blue-500 transition-colors duration-300">Contact</a>
+                <a href="contact.html" class="block text-gray-800 hover:text-blue-500 transition-colors duration-300">Contact</a>
                 <a href="blog.html" class="block text-gray-800 hover:text-blue-600 font-semibold py-2">Blog</a>
             </div>
         </div>
     </header>
 
- <!-- Main Content -->
-   <!-- Main Content -->
-    <!-- Main Content -->
     <main>
-        <!-- Hero Section with Carousel (placeholder images) -->
-        <section class="relative h-[60vh] md:h-[80vh] overflow-hidden">
+        <section class="relative h-[100vh] md:h-[100vh] overflow-hidden">
             <div id="hero-carousel" class="absolute inset-0">
-                <!-- Slide 1 -->
                 <div class="absolute inset-0 opacity-100 transition-opacity duration-1000 ease-in-out" data-slide="0">
-                    <img src="http://127.0.0.1:5503/IMAGES/Home2-page.webp" alt="Modern Office Solutions" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-center p-8">
+                    <video src="3125448-uhd_3840_2160_25fps.mp4" autoplay loop muted class="w-full h-full object-cover filter contrast-125 saturate-15 brightness-110"></video>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-8 hero-text-overlay">
                         <h1 class="text-3xl md:text-6xl lg:text-6x font-extrabold text-white animate-top" style="transition-delay: 0.1s;">GLOBAL OFFICE WORLD</h1>
                         <p class="mt-4 text-sm md:text-xl text-orange-200 max-w-2xl animate-top" style="transition-delay: 0.3s;">GOOD THINGS AT WORK..</p>
                         <a href="products.html" class="mt-8 px-6 py-3 bg-black-600 text-black font-extrabold rounded-full shadow-lg hover:bg-blue-700 transition-transform duration-300 transform scale-100 hover:scale-105 animate-top" style="transition-delay: 0.5s;">
@@ -130,21 +183,17 @@
                         </a>
                     </div>
                 </div>
-                <!-- Slide 2 -->
                 <div class="absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out" data-slide="1">
-                    <img src="https://kano-global.com/uploads/picture/20250708/a39df9745de87647c91f2de37bbf1df0.jpg" alt="Stylish Home Office Setup" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-center p-8">
+                    <video src="12722063-uhd_3840_2160_24fps.mp4" autoplay loop muted class="w-full h-full object-cover filter contrast-125 saturate-15 brightness-110"></video>
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-center p-8 hero-text-overlay">
                         <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white animate-top" style="transition-delay: 0.1s;">Design Your Perfect Space</h1>
-                        <p class="mt-4 text-sm md:text-xl text-gray-200 max-w-2xl animate-top" style="transition-delay: 0.3s;">Furniture that combines comfort, style, and productivity seamlessly.</p>
                         <a href="products.html" class="mt-8 px-6 py-3 bg-black-600 text-white font-semibold rounded-full shadow-lg hover:bg-blue-700 transition-transform duration-300 transform scale-100 hover:scale-105 animate-top" style="transition-delay: 0.5s;">
                             Shop Now
                         </a>
                     </div>
                 </div>
             </div>
-            <!-- Carousel navigation buttons -->
             <button class="absolute top-1/2 left-4 transform -translate-y-1/2 text-white text-3xl opacity-50 hover:opacity-100 transition-opacity z-10" id="prev-slide">
-                
                 <i class="fas fa-chevron-left"></i>
             </button>
             <button class="absolute top-1/2 right-4 transform -translate-y-1/2 text-white text-3xl opacity-50 hover:opacity-100 transition-opacity z-10" id="next-slide">
@@ -152,14 +201,12 @@
             </button>
         </section>
 
-
-
         <section id="products" class="py-16 md:py-24 bg-white">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12 text-gray-900">Featured Products</h2>
-                
+
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <a href="products.html" class="block bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
+                    <a href="products.html" class="block bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
                         <div class="card-image-container">
                             <img src="https://kano-global.com/uploads/picture/20200805/3ad424195b9768b5955e3d99407a30fb.jpg" alt="Ergonomic Chair" class="w-full h-64 object-cover card-image">
                         </div>
@@ -173,7 +220,7 @@
                         </div>
                     </a>
 
-                    <a href="#" class="block bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
+                    <a href="#" class="block bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
                         <div class="card-image-container">
                             <img src="https://kano-global.com/uploads/picture/20200804/2391c9c86148cd25684975f5450c1288.jpg" alt="Modern Desk" class="w-full h-64 object-cover card-image">
                         </div>
@@ -187,7 +234,7 @@
                         </div>
                     </a>
 
-                    <a href="#" class="block bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
+                    <a href="#" class="block bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
                         <div class="card-image-container">
                             <img src="https://kano-global.com/uploads/picture/20200717/8b2a93bbe5d1bd98ef4789d20a252fd4.jpg" alt="Storage Shelf" class="w-full h-64 object-cover card-image">
                         </div>
@@ -255,6 +302,9 @@
             <input type="text" placeholder="Type a message..." class="w-full px-3 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
     </div>
+    <button id="theme-toggle" class="fixed bottom-6 right-[5.5rem] md:right-32 w-16 h-16 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-colors duration-300 focus:outline-none">
+        <i class="fas fa-moon text-2xl"></i>
+    </button>
     <footer id="contact" class="bg-gray-900 text-gray-300 py-12">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -296,14 +346,14 @@
             </div>
         </div>
     </footer>
-    <script> // Carousel functionality
+    <script>
+        // Carousel functionality
         document.addEventListener('DOMContentLoaded', () => {
             const slides = document.querySelectorAll('#hero-carousel [data-slide]');
             const prevButton = document.getElementById('prev-slide');
             const nextButton = document.getElementById('next-slide');
             let currentSlide = 0;
 
-            // Function to show the current slide
             const showSlide = (index) => {
                 slides.forEach((slide, i) => {
                     if (i === index) {
@@ -316,45 +366,68 @@
                 });
             };
 
-            // Event listener for the "next" button
             nextButton.addEventListener('click', () => {
                 currentSlide = (currentSlide + 1) % slides.length;
                 showSlide(currentSlide);
             });
 
-            // Event listener for the "previous" button
             prevButton.addEventListener('click', () => {
                 currentSlide = (currentSlide - 1 + slides.length) % slides.length;
                 showSlide(currentSlide);
             });
 
-            // Initial display of the first slide
             showSlide(currentSlide);
+
+            // Mobile menu toggle
+            document.getElementById('mobile-menu-button').addEventListener('click', () => {
+                const mobileMenu = document.getElementById('mobile-menu');
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Chat bubble and box functionality
+            const chatBubble = document.getElementById('chat-bubble');
+            const chatBoxContainer = document.getElementById('chat-box-container');
+            const closeChatButton = document.getElementById('close-chat-box');
+
+            chatBubble.addEventListener('click', () => {
+                chatBoxContainer.classList.remove('hidden');
+                setTimeout(() => {
+                    chatBoxContainer.classList.add('open');
+                }, 10);
+            });
+
+            closeChatButton.addEventListener('click', () => {
+                chatBoxContainer.classList.remove('open');
+                setTimeout(() => {
+                    chatBoxContainer.classList.add('hidden');
+                }, 300);
+            });
+
+            // Dark/Light Theme Toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+
+            // Check for saved theme in localStorage
+            if (localStorage.getItem('theme') === 'dark') {
+                body.classList.add('dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun text-2xl"></i>';
+            } else {
+                body.classList.remove('dark');
+                themeToggle.innerHTML = '<i class="fas fa-moon text-2xl"></i>';
+            }
+
+            themeToggle.addEventListener('click', () => {
+                if (body.classList.contains('dark')) {
+                    body.classList.remove('dark');
+                    themeToggle.innerHTML = '<i class="fas fa-moon text-2xl"></i>';
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    body.classList.add('dark');
+                    themeToggle.innerHTML = '<i class="fas fa-sun text-2xl"></i>';
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
         });
-
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', () => {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Chat bubble and box functionality
-        const chatBubble = document.getElementById('chat-bubble');
-        const chatBoxContainer = document.getElementById('chat-box-container');
-        const closeChatButton = document.getElementById('close-chat-box');
-
-        chatBubble.addEventListener('click', () => {
-            chatBoxContainer.classList.remove('hidden');
-            setTimeout(() => {
-                chatBoxContainer.classList.add('open');
-            }, 10);
-        });
-
-        closeChatButton.addEventListener('click', () => {
-            chatBoxContainer.classList.remove('open');
-            setTimeout(() => {
-                chatBoxContainer.classList.add('hidden');
-            }, 300); // Matches the CSS transition duration
-        });</script>
+    </script>
 </body>
 </html>
